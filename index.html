@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micheal Tim Joseph Enriquez — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <span class="nav-logo" id="nav-initials">MTE</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-btn">&#9728; Light Mode</button>
+    </div>
+  </nav>
+
+  <!-- ABOUT / HERO -->
+  <section id="about">
+    <div class="about-container">
+      <img
+        src="assets/profile.png"
+        alt="Micheal Tim Joseph Enriquez profile photo"
+        class="profile-img"
+      />
+      <div class="about-text">
+        <p class="greeting" id="greeting-text">Hello, visitor!</p>
+        <h1 id="hero-name">Loading...</h1>
+        <p class="hero-title" id="hero-title"></p>
+        <p class="about-desc" id="about-desc"></p>
+        <div class="contact-chips" id="contact-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div id="education-list"></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="skills-header">
+      <h2 class="section-title">Skills</h2>
+      <button id="animate-skills-btn" class="btn-outline">Show Progress</button>
+    </div>
+    <div id="skills-list"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Web">Web</button>
+      <button class="filter-btn" data-filter="Mobile">Mobile</button>
+      <button class="filter-btn" data-filter="UI">UI</button>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <form id="contact-form" novalidate>
+      <div class="form-group">
+        <label for="fname">Name</label>
+        <input type="text" id="fname" placeholder="Your full name" />
+        <span class="error-msg" id="fname-error"></span>
+      </div>
+      <div class="form-group">
+        <label for="femail">Email</label>
+        <input type="email" id="femail" placeholder="your@email.com" />
+        <span class="error-msg" id="femail-error"></span>
+      </div>
+      <div class="form-group">
+        <label for="fmessage">Message</label>
+        <textarea id="fmessage" rows="5" placeholder="Write your message..."></textarea>
+        <span class="error-msg" id="fmessage-error"></span>
+      </div>
+      <button type="submit" class="btn-submit">Send Message</button>
+      <p class="form-success" id="form-success"></p>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p id="footer-name"></p>
+    <p class="footer-sub">Built with HTML &middot; CSS &middot; JavaScript &middot; jQuery</p>
+  </footer>
+
+  <!-- jQuery CDN — must load BEFORE script.js and main.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Vanilla JS features -->
+  <script src="js/script.js"></script>
+  <!-- jQuery interactions -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

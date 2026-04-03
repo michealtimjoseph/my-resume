@@ -36,6 +36,18 @@
       "name": "my-resume",
       "description": "A personal resume website built with HTML, CSS, and JavaScript. It features a clean and modern design, showcasing my skills, experience, and projects in a visually appealing way. The website is fully responsive and optimized for both desktop and mobile devices.",
       "link": "https://github.com/michealtimjoseph/my-resume"
-    }
-  ]
+    },
+  {
+    "name": "DreamHome",
+    "category": "Web",
+    "description": "A real estate platform with scalable backend and modern dashboard UI.",
+    "link": "https://github.com/Jedlouies/dreamhome.git"
+  },
+  {
+    "name": "Hackathon Project",
+    "category": "UI",
+    "description": "A rapid-prototype built during a hackathon, focusing on clean UX design.",
+    "link": "https://github.com/JohnLloydCanoy/nova-gaze-ai.git"
+  }
+]
 }
