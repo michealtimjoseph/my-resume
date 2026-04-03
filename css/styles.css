@@ -29,7 +29,72 @@ body.light-mode {
   --border:     rgba(0, 0, 0, 0.1);
 }
 
-/* ---- RESET & BASE ---- */
+/* ---- SCROLL PROGRESS BAR ---- */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 2000;
+  transition: width 0.1s linear;
+}
+
+/* ---- TYPING CURSOR ---- */
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ---- EXPERIENCE CARDS ---- */
+.exp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+
+.exp-card:hover {
+  border-color: var(--accent);
+}
+
+.exp-role {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.exp-company {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.exp-period {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.exp-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ---- CSS RESET & BASE ---- */
 *, *::before, *::after {
   margin: 0;
   padding: 0;

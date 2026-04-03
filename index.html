@@ -10,6 +10,9 @@
 </head>
 <body>
 
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
+
   <!-- NAVIGATION -->
   <nav id="navbar">
     <div class="nav-container">
@@ -17,6 +20,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -36,7 +40,7 @@
       <div class="about-text">
         <p class="greeting" id="greeting-text">Hello, visitor!</p>
         <h1 id="hero-name">Loading...</h1>
-        <p class="hero-title" id="hero-title"></p>
+        <p class="hero-title"><span id="hero-title"></span><span class="cursor">|</span></p>
         <p class="about-desc" id="about-desc"></p>
         <div class="contact-chips" id="contact-chips"></div>
       </div>
@@ -47,6 +51,12 @@
   <section id="education">
     <h2 class="section-title">Education</h2>
     <div id="education-list"></div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div id="experience-list"></div>
   </section>
 
   <!-- SKILLS -->

@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --------------------------------------------------
   // FEATURE 1: Prompt-based personalization
-  // Asks the visitor their name and updates the greeting
-  // using getElementById + textContent (DOM manipulation)
   // --------------------------------------------------
   var visitorName = prompt("Welcome to my resume! What's your name?");
   var greetingEl = document.getElementById('greeting-text');
@@ -25,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --------------------------------------------------
   // FEATURE 2: Load and display data from resume.json
-  // Uses fetch() + JSON, then renders sections with
-  // createElement() and appendChild()
   // --------------------------------------------------
   fetch('data/resume.json')
     .then(function (response) {
@@ -38,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(function (data) {
       renderHero(data);
       renderEducation(data.education);
+      renderExperience(data.experience);
       renderSkills(data.skills);
       renderProjects(data.projects);
 
@@ -53,15 +50,18 @@ document.addEventListener('DOMContentLoaded', function () {
         .slice(0, 3)
         .toUpperCase();
       navInitials.textContent = initials;
+
+      // Start typing animation AFTER data loads so title is ready
+      startTypingAnimation(data.title);
     })
     .catch(function (err) {
       console.error('Error loading resume data:', err);
       document.getElementById('hero-name').textContent = 'Micheal Tim Joseph Enriquez';
+      startTypingAnimation('Full-Stack Developer | IT Student');
     });
 
   // --------------------------------------------------
   // FEATURE 3: Form validation with clear user feedback
-  // Uses getElementById, conditions, DOM manipulation
   // --------------------------------------------------
   var form = document.getElementById('contact-form');
 
@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var msgError     = document.getElementById('fmessage-error');
     var successMsg   = document.getElementById('form-success');
 
-    // Clear previous feedback
     nameError.textContent  = '';
     emailError.textContent = '';
     msgError.textContent   = '';
@@ -87,14 +86,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var isValid = true;
 
-    // Condition: name check
     if (nameInput.value.trim() === '') {
       nameError.textContent = 'Name is required.';
       nameInput.classList.add('error');
       isValid = false;
     }
 
-    // Condition: email check
     if (emailInput.value.trim() === '') {
       emailError.textContent = 'Email is required.';
       emailInput.classList.add('error');
@@ -105,14 +102,12 @@ document.addEventListener('DOMContentLoaded', function () {
       isValid = false;
     }
 
-    // Condition: message check
     if (messageInput.value.trim() === '') {
       msgError.textContent = 'Message is required.';
       messageInput.classList.add('error');
       isValid = false;
     }
 
-    // If all valid — show success and reset
     if (isValid) {
       successMsg.textContent = '\u2713 Message sent! I will get back to you soon.';
       form.reset();
@@ -127,6 +122,90 @@ document.addEventListener('DOMContentLoaded', function () {
 // --------------------------------------------------
 // RENDER FUNCTIONS — use createElement + appendChild
 // --------------------------------------------------
+
+// --------------------------------------------------
+// TYPING ANIMATION
+// Cycles through phrases using setInterval + conditions
+// Uses getElementById + textContent (DOM manipulation)
+// --------------------------------------------------
+function startTypingAnimation(primaryTitle) {
+  var phrases = [
+    primaryTitle,
+    'UI/UX Enthusiast',
+    'Problem Solver',
+    'IT Student @ USTP'
+  ];
+
+  var el        = document.getElementById('hero-title');
+  var phraseIdx = 0;
+  var charIdx   = 0;
+  var isDeleting = false;
+  var typeSpeed  = 80;
+
+  function type() {
+    var current = phrases[phraseIdx];
+
+    if (isDeleting) {
+      // Remove one character
+      el.textContent = current.substring(0, charIdx - 1);
+      charIdx--;
+    } else {
+      // Add one character
+      el.textContent = current.substring(0, charIdx + 1);
+      charIdx++;
+    }
+
+    // Condition: finished typing full phrase
+    if (!isDeleting && charIdx === current.length) {
+      isDeleting = true;
+      typeSpeed  = 1500; // pause before deleting
+    }
+    // Condition: finished deleting
+    else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      phraseIdx  = (phraseIdx + 1) % phrases.length;
+      typeSpeed  = 200; // brief pause before typing next
+    } else {
+      typeSpeed = isDeleting ? 40 : 80;
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  type();
+}
+
+function renderExperience(experience) {
+  var list = document.getElementById('experience-list');
+  list.innerHTML = '';
+
+  experience.forEach(function (exp) {
+    var card = document.createElement('div');
+    card.className = 'exp-card';
+
+    var role = document.createElement('div');
+    role.className   = 'exp-role';
+    role.textContent = exp.role;
+
+    var company = document.createElement('div');
+    company.className   = 'exp-company';
+    company.textContent = exp.company;
+
+    var period = document.createElement('div');
+    period.className   = 'exp-period';
+    period.textContent = exp.period;
+
+    var desc = document.createElement('p');
+    desc.className   = 'exp-desc';
+    desc.textContent = exp.description;
+
+    card.appendChild(role);
+    card.appendChild(company);
+    card.appendChild(period);
+    card.appendChild(desc);
+    list.appendChild(card);
+  });
+}
 
 function renderHero(data) {
   document.getElementById('hero-name').textContent  = data.name;

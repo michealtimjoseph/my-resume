@@ -89,14 +89,21 @@ $(document).ready(function () {
     $(this).addClass('active');
   });
 
-  // Auto-highlight nav link based on scroll position
+  // -----------------------------------------------
+  // SCROLL PROGRESS BAR
+  // Uses: css() on scroll event to update width
+  // -----------------------------------------------
   $(window).on('scroll', function () {
-    var scrollPos = $(this).scrollTop() + 80;
+    var scrollTop    = $(this).scrollTop();
+    var docHeight    = $(document).height() - $(window).height();
+    var scrollPct    = (scrollTop / docHeight) * 100;
+    $('#scroll-progress').css('width', scrollPct + '%');
 
+    // Also update active nav link
+    var scrollPos = scrollTop + 80;
     $('section').each(function () {
       var sectionTop = $(this).offset().top;
       var sectionId  = $(this).attr('id');
-
       if (scrollPos >= sectionTop) {
         $('.nav-links a').removeClass('active');
         $('.nav-links a[href="#' + sectionId + '"]').addClass('active');
