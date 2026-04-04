@@ -7,7 +7,7 @@
 > **GitHub Pages:** _[https://michealtimjoseph.github.io/my-resume/]_
 
 ## Video Demo
-> **YouTube:** _[in progress..]_
+> **YouTube:** _[https://youtu.be/ALXMmDT-pRE]_
 
 ---
 
